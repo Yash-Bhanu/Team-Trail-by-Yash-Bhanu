@@ -13,7 +13,6 @@ import {
   uniqueIndex,
   index,
   jsonb,
-  serial,
   bigint,
   check,
   uuid,

@@ -148,8 +148,8 @@ export function extractApprovedWebhookMetadata(
   let activityType: NormalizedWebhookMetadata['activityType'] = null;
   let githubEventId: string | null = null;
   let externalUrl: string | null = null;
-  let prNumber: number | null = data.pull_request?.number ?? null;
-  let issueNumber: number | null = data.issue?.number ?? null;
+  const prNumber: number | null = data.pull_request?.number ?? null;
+  const issueNumber: number | null = data.issue?.number ?? null;
   let eventTimestamp = new Date();
 
   if (eventType === 'pull_request' && data.pull_request) {

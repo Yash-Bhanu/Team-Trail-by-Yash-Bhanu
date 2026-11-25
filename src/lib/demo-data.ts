@@ -1,11 +1,7 @@
 // Synthetic demo data fixtures — completely isolated from production
 // All names, teams, and data are fictional
 
-import type {
-  DemoTeam, DemoMember, DemoCheckin, DemoFlag,
-  DailyMetric, ContributionBreakdown, FlagSeverity,
-  IntegrationStatus
-} from '@/types';
+import type { DemoTeam, DailyMetric, FlagSeverity } from '@/types';
 
 function daysAgo(n: number): string {
   const d = new Date();

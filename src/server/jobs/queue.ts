@@ -3,7 +3,7 @@ import 'server-only';
 
 import { db } from '@/server/db';
 import { backgroundJobs } from '@/server/db/schema';
-import { and, eq, lte, or, sql } from 'drizzle-orm';
+import { and, eq, lte, sql } from 'drizzle-orm';
 
 export type JobQueue = 'webhooks' | 'sync' | 'metrics' | 'maintenance';
 

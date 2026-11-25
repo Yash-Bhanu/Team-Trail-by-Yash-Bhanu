@@ -216,7 +216,6 @@ export function detectParticipationImbalance(
     return null;
   }
 
-  const now = clock.now();
   // Filter bots and unattributed events
   const eligibleEvents = window.events.filter(e => !e.isBot && e.isAttributed);
 

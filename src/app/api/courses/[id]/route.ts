@@ -4,7 +4,7 @@ import { requireAuthUser } from '@/server/auth/session';
 import { enforce, AuthorizationError } from '@/server/authorization';
 import { updateCourseSchema } from '@/lib/validations';
 import { db } from '@/server/db';
-import { courses, teams } from '@/server/db/schema';
+import { courses } from '@/server/db/schema';
 import { eq } from 'drizzle-orm';
 import { validateOrigin, recordAuditEvent, getClientIp } from '@/server/security/csrf';
 

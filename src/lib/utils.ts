@@ -40,13 +40,22 @@ export function formatRelativeTime(date: Date | string): string {
 }
 
 export function getWeekStart(date: Date, timezone: string = 'UTC'): Date {
-  // Get the Monday of the current week in the specified timezone
-  const d = new Date(date);
-  const day = d.getDay();
-  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-  const weekStart = new Date(d.setDate(diff));
-  weekStart.setHours(0, 0, 0, 0);
-  return weekStart;
+  // Determine calendar date in course timezone, then compute Monday 00:00:00Z
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(date);
+
+  const year = Number(parts.find((p) => p.type === 'year')?.value ?? date.getUTCFullYear());
+  const month = Number(parts.find((p) => p.type === 'month')?.value ?? date.getUTCMonth() + 1) - 1;
+  const dayNum = Number(parts.find((p) => p.type === 'day')?.value ?? date.getUTCDate());
+
+  const localUtc = new Date(Date.UTC(year, month, dayNum));
+  const day = localUtc.getUTCDay();
+  const diff = dayNum - day + (day === 0 ? -6 : 1);
+  return new Date(Date.UTC(year, month, diff, 0, 0, 0, 0));
 }
 
 export function truncate(str: string, length: number): string {

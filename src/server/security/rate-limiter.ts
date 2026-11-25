@@ -43,7 +43,7 @@ export async function checkRateLimit(
 
   try {
     // Atomic upsert with counting
-    const result = await db
+    await db
       .insert(rateLimits)
       .values({
         key,
